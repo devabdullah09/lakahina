@@ -1,0 +1,115 @@
+import { useParams, Link } from 'react-router-dom'
+import { properties } from '../data/properties'
+
+function Property() {
+  const { slug } = useParams<{ slug: string }>()
+  const property = properties.find((p) => p.slug === slug)
+
+  if (!property) {
+    return (
+      <div className="pt-20 min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-4xl font-light mb-4">Property Not Found</h1>
+          <Link to="/" className="text-gray-600 hover:text-gray-900 underline">
+            Return to Home
+          </Link>
+        </div>
+      </div>
+    )
+  }
+
+  return (
+    <div className="pt-20">
+      {/* Hero Image */}
+      <section className="relative h-[70vh] overflow-hidden">
+        <img
+          src={property.image}
+          alt={property.name}
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 p-8 lg:p-16 text-white">
+          <div className="container mx-auto">
+            <h1 className="text-5xl md:text-7xl font-light mb-4">
+              {property.name} | {property.location}
+            </h1>
+            <p className="text-xl md:text-2xl text-white/90">{property.description}</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Property Details */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4 lg:px-8">
+          <div className="max-w-4xl mx-auto">
+            <div className="prose prose-lg max-w-none">
+              <h2 className="text-3xl font-light mb-6 text-gray-900">About {property.name}</h2>
+              <p className="text-gray-600 leading-relaxed mb-8">
+                Experience the magic of {property.name}, located in the heart of {property.location}.
+                {property.description} This unique destination offers an unparalleled experience
+                that combines luxury, adventure, and connection with nature and local culture.
+              </p>
+              <p className="text-gray-600 leading-relaxed mb-8">
+                Our carefully curated spaces and experiences are designed to create meaningful
+                connections and lasting memories. Whether you're seeking adventure, relaxation, or
+                inspiration, {property.name} provides the perfect setting for your journey.
+              </p>
+            </div>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-wrap gap-4 mt-12">
+              <Link
+                to="/book"
+                className="px-8 py-3 bg-black text-white rounded-full hover:bg-gray-800 transition-colors font-medium"
+              >
+                Book Now
+              </Link>
+              <Link
+                to="/offers"
+                className="px-8 py-3 border-2 border-gray-900 text-gray-900 rounded-full hover:bg-gray-900 hover:text-white transition-colors font-medium"
+              >
+                View Offers
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Related Properties */}
+      <section className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4 lg:px-8">
+          <h2 className="text-3xl font-light mb-12 text-center text-gray-900">
+            Explore Other Homes
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {properties
+              .filter((p) => p.id !== property.id)
+              .slice(0, 3)
+              .map((relatedProperty) => (
+                <Link
+                  key={relatedProperty.id}
+                  to={`/property/${relatedProperty.slug}`}
+                  className="group block"
+                >
+                  <div className="relative aspect-[4/3] overflow-hidden rounded-lg mb-4">
+                    <img
+                      src={relatedProperty.image}
+                      alt={relatedProperty.name}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                  </div>
+                  <h3 className="text-lg font-medium text-gray-900 mb-1">
+                    {relatedProperty.name} | {relatedProperty.location}
+                  </h3>
+                  <p className="text-gray-600 text-sm">{relatedProperty.description}</p>
+                </Link>
+              ))}
+          </div>
+        </div>
+      </section>
+    </div>
+  )
+}
+
+export default Property
+
