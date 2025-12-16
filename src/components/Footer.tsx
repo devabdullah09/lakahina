@@ -27,20 +27,20 @@ function Footer() {
 
   return (
     <footer className="bg-gray-900 text-white">
-      <div className="container mx-auto px-4 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 lg:gap-12">
           {/* Our Homes */}
           <div>
-            <h3 className="text-lg font-semibold mb-6">Our Homes</h3>
+            <h3 className="text-base sm:text-lg font-semibold mb-4 sm:mb-6">Our Homes</h3>
             <div className="space-y-4">
               <div>
-                <h4 className="text-sm font-medium text-gray-400 mb-3">Americas</h4>
-                <ul className="space-y-2">
+                <h4 className="text-xs sm:text-sm font-medium text-gray-400 mb-2 sm:mb-3">Americas</h4>
+                <ul className="space-y-1.5 sm:space-y-2">
                   {americasProperties.map((property) => (
                     <li key={property.slug}>
                       <Link
                         to={`/property/${property.slug}`}
-                        className="text-gray-300 hover:text-white text-sm transition-colors"
+                        className="text-gray-300 hover:text-white text-xs sm:text-sm transition-colors block"
                       >
                         {property.name}
                       </Link>
@@ -52,15 +52,15 @@ function Footer() {
           </div>
 
           <div>
-            <div className="space-y-4 mt-10 md:mt-0">
+            <div className="space-y-4 mt-8 sm:mt-10 md:mt-0">
               <div>
-                <h4 className="text-sm font-medium text-gray-400 mb-3">Middle East</h4>
-                <ul className="space-y-2">
+                <h4 className="text-xs sm:text-sm font-medium text-gray-400 mb-2 sm:mb-3">Middle East</h4>
+                <ul className="space-y-1.5 sm:space-y-2">
                   {middleEastProperties.map((property) => (
                     <li key={property.slug}>
                       <Link
                         to={`/property/${property.slug}`}
-                        className="text-gray-300 hover:text-white text-sm transition-colors"
+                        className="text-gray-300 hover:text-white text-xs sm:text-sm transition-colors block"
                       >
                         {property.name}
                       </Link>
@@ -72,15 +72,15 @@ function Footer() {
           </div>
 
           <div>
-            <div className="space-y-4 mt-10 md:mt-0">
+            <div className="space-y-4 mt-8 sm:mt-10 md:mt-0">
               <div>
-                <h4 className="text-sm font-medium text-gray-400 mb-3">Africa</h4>
-                <ul className="space-y-2">
+                <h4 className="text-xs sm:text-sm font-medium text-gray-400 mb-2 sm:mb-3">Africa</h4>
+                <ul className="space-y-1.5 sm:space-y-2">
                   {africaProperties.map((property) => (
                     <li key={property.slug}>
                       <Link
                         to={`/property/${property.slug}`}
-                        className="text-gray-300 hover:text-white text-sm transition-colors"
+                        className="text-gray-300 hover:text-white text-xs sm:text-sm transition-colors block"
                       >
                         {property.name}
                       </Link>
@@ -93,48 +93,48 @@ function Footer() {
 
           {/* Our Habitas & Follow Us */}
           <div>
-            <h3 className="text-lg font-semibold mb-6">Our Habitas</h3>
-            <ul className="space-y-3 mb-8">
+            <h3 className="text-base sm:text-lg font-semibold mb-4 sm:mb-6">Our Habitas</h3>
+            <ul className="space-y-2 sm:space-y-3 mb-6 sm:mb-8">
               <li>
-                <Link to="/contact" className="text-gray-300 hover:text-white text-sm transition-colors">
+                <Link to="/contact" className="text-gray-300 hover:text-white text-xs sm:text-sm transition-colors block">
                   Contact Us
                 </Link>
               </li>
               <li>
-                <Link to="/sustainability" className="text-gray-300 hover:text-white text-sm transition-colors">
+                <Link to="/sustainability" className="text-gray-300 hover:text-white text-xs sm:text-sm transition-colors block">
                   Sustainability
                 </Link>
               </li>
               <li>
-                <Link to="/community-impact" className="text-gray-300 hover:text-white text-sm transition-colors">
+                <Link to="/community-impact" className="text-gray-300 hover:text-white text-xs sm:text-sm transition-colors block">
                   Community Impact
                 </Link>
               </li>
               <li>
-                <Link to="/journal" className="text-gray-300 hover:text-white text-sm transition-colors">
+                <Link to="/journal" className="text-gray-300 hover:text-white text-xs sm:text-sm transition-colors block">
                   Journal
                 </Link>
               </li>
               <li>
-                <Link to="/mantra" className="text-gray-300 hover:text-white text-sm transition-colors">
+                <Link to="/mantra" className="text-gray-300 hover:text-white text-xs sm:text-sm transition-colors block">
                   Mantra
                 </Link>
               </li>
               <li>
-                <Link to="/press" className="text-gray-300 hover:text-white text-sm transition-colors">
+                <Link to="/press" className="text-gray-300 hover:text-white text-xs sm:text-sm transition-colors block">
                   Press
                 </Link>
               </li>
               <li>
-                <Link to="/careers" className="text-gray-300 hover:text-white text-sm transition-colors">
+                <Link to="/careers" className="text-gray-300 hover:text-white text-xs sm:text-sm transition-colors block">
                   Careers
                 </Link>
               </li>
             </ul>
 
             <div>
-              <h4 className="text-sm font-medium text-gray-400 mb-3">Follow Us</h4>
-              <div className="flex space-x-4">
+              <h4 className="text-xs sm:text-sm font-medium text-gray-400 mb-2 sm:mb-3">Follow Us</h4>
+              <div className="flex space-x-3 sm:space-x-4">
                 <a href="#" className="text-gray-300 hover:text-white transition-colors">
                   <span className="sr-only">Instagram</span>
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -171,18 +171,18 @@ function Footer() {
         </div>
 
         {/* Newsletter Signup */}
-        <div className="mt-12 pt-8 border-t border-gray-800">
+        <div className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-gray-800">
           <div className="max-w-md">
-            <h3 className="text-lg font-semibold mb-4">Join our family</h3>
-            <form className="flex gap-2">
+            <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4">Join our family</h3>
+            <form className="flex flex-col sm:flex-row gap-2">
               <input
                 type="email"
                 placeholder="Email address"
-                className="flex-1 px-4 py-2 bg-gray-800 border border-gray-700 rounded-full text-white placeholder-gray-400 focus:outline-none focus:border-gray-600"
+                className="flex-1 px-4 py-2.5 sm:py-2 bg-gray-800 border border-gray-700 rounded-full text-white placeholder-gray-400 focus:outline-none focus:border-gray-600 text-sm sm:text-base"
               />
               <button
                 type="submit"
-                className="px-6 py-2 bg-white text-gray-900 rounded-full hover:bg-gray-100 transition-colors font-medium"
+                className="px-6 py-2.5 sm:py-2 bg-white text-gray-900 rounded-full hover:bg-gray-100 transition-colors font-medium text-sm sm:text-base whitespace-nowrap"
               >
                 Join Us
               </button>
@@ -191,7 +191,7 @@ function Footer() {
         </div>
 
         {/* Copyright */}
-        <div className="mt-8 pt-8 border-t border-gray-800 text-center text-gray-400 text-sm">
+        <div className="mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-gray-800 text-center text-gray-400 text-xs sm:text-sm">
           <p>&copy; {new Date().getFullYear()} Our Habitas. All rights reserved.</p>
           <Link to="/privacy" className="hover:text-white transition-colors mt-2 inline-block">
             Privacy Policy

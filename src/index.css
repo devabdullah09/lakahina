@@ -18,3 +18,14 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Ensure images are responsive */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Prevent horizontal scroll on mobile */
+body {
+  overflow-x: hidden;
+}
+

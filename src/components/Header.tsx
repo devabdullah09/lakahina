@@ -21,13 +21,13 @@ function Header() {
     <>
       {/* Side Navigation Menu */}
       <div
-        className={`fixed top-0 left-0 h-full w-[33.333%] min-w-[320px] max-w-[480px] bg-gray-700/90 backdrop-blur-md z-50 transform transition-transform duration-300 ease-in-out ${
+        className={`fixed top-0 left-0 h-full w-full sm:w-[33.333%] sm:min-w-[320px] sm:max-w-[480px] bg-gray-700/90 backdrop-blur-md z-50 transform transition-transform duration-300 ease-in-out ${
           isMenuOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
-        <div className="flex flex-col h-full p-8 md:p-12">
+        <div className="flex flex-col h-full p-6 sm:p-8 md:p-12">
           {/* Header with Logo and Close Button */}
-          <div className="flex items-start justify-between mb-16 md:mb-20">
+          <div className="flex items-start justify-between mb-12 sm:mb-16 md:mb-20">
             {/* Logo */}
             <Link to="/" onClick={() => setIsMenuOpen(false)} className="flex items-center space-x-3">
               <img
@@ -58,27 +58,27 @@ function Header() {
           </div>
 
           {/* Brand Name */}
-          <div className="mb-12 md:mb-16">
+          <div className="mb-8 sm:mb-12 md:mb-16">
             <Link to="/" onClick={() => setIsMenuOpen(false)}>
-              <h1 className="text-xl md:text-2xl font-light text-white uppercase tracking-[0.15em]">
+              <h1 className="text-lg sm:text-xl md:text-2xl font-light text-white uppercase tracking-[0.15em]">
                 LA KAHINA
               </h1>
             </Link>
           </div>
 
           {/* Navigation Links */}
-          <nav className="flex flex-col space-y-5 md:space-y-6">
+          <nav className="flex flex-col space-y-4 sm:space-y-5 md:space-y-6">
             <Link
               to="/"
               onClick={() => setIsMenuOpen(false)}
-              className="text-white uppercase tracking-[0.1em] text-base md:text-lg font-light hover:text-gray-300 transition-colors py-1 ml-7"
+              className="text-white uppercase tracking-[0.1em] text-sm sm:text-base md:text-lg font-light hover:text-gray-300 transition-colors py-1 ml-4 sm:ml-7"
             >
               About Us
             </Link>
             <Link
               to="/experiences"
               onClick={() => setIsMenuOpen(false)}
-              className="text-white uppercase tracking-[0.1em] text-base md:text-lg font-light hover:text-gray-300 transition-colors py-1 flex items-center group"
+              className="text-white uppercase tracking-[0.1em] text-sm sm:text-base md:text-lg font-light hover:text-gray-300 transition-colors py-1 flex items-center group"
             >
               {(location.pathname === '/experiences' || location.pathname.startsWith('/experience/')) && (
                 <svg
@@ -93,19 +93,19 @@ function Header() {
                   <path d="M9 5l7 7-7 7" />
                 </svg>
               )}
-              <span className={!(location.pathname === '/experiences' || location.pathname.startsWith('/experience/')) ? 'ml-7' : ''}>Our Experiences</span>
+              <span className={!(location.pathname === '/experiences' || location.pathname.startsWith('/experience/')) ? 'ml-4 sm:ml-7' : ''}>Our Experiences</span>
             </Link>
             <Link
               to="/"
               onClick={() => setIsMenuOpen(false)}
-              className="text-white uppercase tracking-[0.1em] text-base md:text-lg font-light hover:text-gray-300 transition-colors py-1 ml-7"
+              className="text-white uppercase tracking-[0.1em] text-sm sm:text-base md:text-lg font-light hover:text-gray-300 transition-colors py-1 ml-4 sm:ml-7"
             >
               Join Us
             </Link>
             <Link
               to="/"
               onClick={() => setIsMenuOpen(false)}
-              className="text-white uppercase tracking-[0.1em] text-base md:text-lg font-light hover:text-gray-300 transition-colors py-1 ml-7"
+              className="text-white uppercase tracking-[0.1em] text-sm sm:text-base md:text-lg font-light hover:text-gray-300 transition-colors py-1 ml-4 sm:ml-7"
             >
               Journal
             </Link>

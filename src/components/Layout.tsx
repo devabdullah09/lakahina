@@ -16,7 +16,7 @@ function Layout({ children }: LayoutProps) {
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
-      <main className={`flex-grow ${isHeroRoute ? '' : 'pt-20'}`}>{children}</main>
+      <main className={`flex-grow ${isHeroRoute ? '' : 'pt-16 sm:pt-20'}`}>{children}</main>
       {!isHeroRoute && <Footer />}
     </div>
   )
