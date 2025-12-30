@@ -4,7 +4,6 @@ import Header from './Header'
 import Footer from './Footer'
 import { getR2Url } from '../config/r2-assets'
 
-const logoWhite = getR2Url('logo/logo white.png')
 const logoDark = getR2Url('logo/logo white.png')
 
 interface LayoutProps {
