@@ -18,9 +18,13 @@ export interface Experience {
   label?: string
   location?: string
   link?: string
+  comingSoon?: boolean
   video?: string
+  /** Fallback video URLs to try if primary fails (e.g. alternate R2 path) */
+  videoFallbackUrls?: string[]
   images?: string[]
   bottomImage?: string
+  gallery?: string[]
   fullDescription?: {
     subtitle?: string
     introParagraph?: string

@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { getR2Url } from '../config/r2-assets'
-
-const logoWhite = getR2Url('logo/logo white.png')
+import logoDark from '../assets/logo/LAKAHINA_FullLogo (black).png'
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -19,9 +17,9 @@ function Header() {
 
   return (
     <>
-      {/* Side Navigation Menu */}
+      {/* Side Navigation Menu - light bg for black logo */}
       <div
-        className={`fixed top-0 left-0 h-full w-full sm:w-[33.333%] sm:min-w-[320px] sm:max-w-[480px] bg-gray-700/90 backdrop-blur-md z-50 transform transition-transform duration-300 ease-in-out ${
+        className={`fixed top-0 left-0 h-full w-full sm:w-[33.333%] sm:min-w-[320px] sm:max-w-[480px] bg-white border-r border-gray-200 z-50 transform transition-transform duration-300 ease-in-out ${
           isMenuOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
@@ -31,7 +29,7 @@ function Header() {
             {/* Logo */}
             <Link to="/" onClick={() => setIsMenuOpen(false)} className="flex items-center space-x-3">
               <img
-                src={logoWhite}
+                src={logoDark}
                 alt="La Kahina Logo"
                 className="h-8 md:h-10 w-auto"
               />
@@ -40,7 +38,7 @@ function Header() {
             {/* Close Button */}
             <button
               onClick={() => setIsMenuOpen(false)}
-              className="text-white hover:text-gray-300 transition-colors"
+              className="text-gray-900 hover:text-gray-600 transition-colors"
               aria-label="Close menu"
             >
               <svg
@@ -57,30 +55,22 @@ function Header() {
             </button>
           </div>
 
-          {/* Brand Name */}
-          <div className="mb-8 sm:mb-12 md:mb-16">
-            <Link to="/" onClick={() => setIsMenuOpen(false)}>
-              <h1 className="text-lg sm:text-xl md:text-2xl font-light text-white uppercase tracking-[0.15em]">
-                LA KAHINA
-              </h1>
-            </Link>
-          </div>
 
           {/* Navigation Links */}
           <nav className="flex flex-col space-y-4 sm:space-y-5 md:space-y-6">
             <Link
-              to="/"
+              to="/about"
               onClick={() => setIsMenuOpen(false)}
-              className="text-white uppercase tracking-[0.1em] text-sm sm:text-base md:text-lg font-light hover:text-gray-300 transition-colors py-1 ml-4 sm:ml-7"
+              className="text-gray-900 uppercase tracking-[0.1em] text-sm sm:text-base md:text-lg font-light hover:text-gray-600 transition-colors py-1 ml-4 sm:ml-7 font-display"
             >
               About Us
             </Link>
             <Link
               to="/experiences"
               onClick={() => setIsMenuOpen(false)}
-              className="text-white uppercase tracking-[0.1em] text-sm sm:text-base md:text-lg font-light hover:text-gray-300 transition-colors py-1 flex items-center group"
+              className="text-gray-900 uppercase tracking-[0.1em] text-sm sm:text-base md:text-lg font-light hover:text-gray-600 transition-colors py-1 flex items-center group font-display"
             >
-              {(location.pathname === '/experiences' || location.pathname.startsWith('/experience/')) && (
+              {(location.pathname === '/experiences' || location.pathname.startsWith('/experiences/')) && (
                 <svg
                   className="w-4 h-4 mr-3 flex-shrink-0"
                   fill="none"
@@ -93,19 +83,19 @@ function Header() {
                   <path d="M9 5l7 7-7 7" />
                 </svg>
               )}
-              <span className={!(location.pathname === '/experiences' || location.pathname.startsWith('/experience/')) ? 'ml-4 sm:ml-7' : ''}>Our Experiences</span>
+              <span className={!(location.pathname === '/experiences' || location.pathname.startsWith('/experiences/')) ? 'ml-4 sm:ml-7' : ''}>Our Experiences</span>
             </Link>
             <Link
-              to="/"
+              to="/join"
               onClick={() => setIsMenuOpen(false)}
-              className="text-white uppercase tracking-[0.1em] text-sm sm:text-base md:text-lg font-light hover:text-gray-300 transition-colors py-1 ml-4 sm:ml-7"
+              className="text-gray-900 uppercase tracking-[0.1em] text-sm sm:text-base md:text-lg font-light hover:text-gray-600 transition-colors py-1 ml-4 sm:ml-7 font-display"
             >
               Join Us
             </Link>
             <Link
-              to="/"
+              to="/journal"
               onClick={() => setIsMenuOpen(false)}
-              className="text-white uppercase tracking-[0.1em] text-sm sm:text-base md:text-lg font-light hover:text-gray-300 transition-colors py-1 ml-4 sm:ml-7"
+              className="text-gray-900 uppercase tracking-[0.1em] text-sm sm:text-base md:text-lg font-light hover:text-gray-600 transition-colors py-1 ml-4 sm:ml-7 font-display"
             >
               Journal
             </Link>

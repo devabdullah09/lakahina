@@ -1,4 +1,69 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+/* Neue Haas Grotesk Display Font Faces */
+@font-face {
+  font-family: 'Neue Haas Grotesk Display';
+  src: url('./assets/font/neuehaasgrotdisp-45light-trial.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neue Haas Grotesk Display';
+  src: url('./assets/font/neuehaasgrotdisp-46lightitalic-trial.otf') format('opentype');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neue Haas Grotesk Display';
+  src: url('./assets/font/neuehaasgrotdisp-55roman-trial.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neue Haas Grotesk Display';
+  src: url('./assets/font/neuehaasgrotdisp-56italic-trial.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neue Haas Grotesk Display';
+  src: url('./assets/font/neuehaasgrotdisp-65medium-trial.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neue Haas Grotesk Display';
+  src: url('./assets/font/neuehaasgrotdisp-66mediumitalic-trial.otf') format('opentype');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neue Haas Grotesk Display';
+  src: url('./assets/font/neuehaasgrotdisp-75bold-trial.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neue Haas Grotesk Display';
+  src: url('./assets/font/neuehaasgrotdisp-76bolditalic-trial.otf') format('opentype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
 
 @tailwind base;
 @tailwind components;
@@ -32,10 +97,10 @@ body {
   overflow-x: hidden;
 }
 
-/* Serif font for headings */
+/* Courier Prime for headings */
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Playfair Display', serif;
-  font-weight: 300;
+  font-family: 'Courier Prime', 'Courier New', monospace;
+  font-weight: 400;
 }
 
 /* Horizontal scroll animation for Our Homes section */
@@ -54,5 +119,34 @@ h1, h2, h3, h4, h5, h6 {
 
 .pause-animation:hover {
   animation-play-state: paused;
+}
+
+/* Neue Haas Grotesk Display utility class */
+.font-display {
+  font-family: 'Neue Haas Grotesk Display', sans-serif;
+}
+
+/* Courier font utility classes */
+.font-courier {
+  font-family: 'Courier Prime', 'Courier New', monospace;
+}
+
+/* Experience detail typography */
+.experience-content {
+  line-height: 1.7;
+}
+
+.experience-content h2 {
+  font-family: 'Courier Prime', 'Courier New', monospace;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  margin-bottom: 1.5rem;
+}
+
+.experience-content .section-title {
+  font-family: 'Courier Prime', 'Courier New', monospace;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 

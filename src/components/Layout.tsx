@@ -2,9 +2,7 @@ import { ReactNode } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import Header from './Header'
 import Footer from './Footer'
-import { getR2Url } from '../config/r2-assets'
-
-const logoDark = getR2Url('logo/logo white.png')
+import logoDark from '../assets/logo/LAKAHINA_FullLogo (black).png'
 
 interface LayoutProps {
   children: ReactNode
@@ -45,16 +43,13 @@ function Layout({ children }: LayoutProps) {
                 </svg>
               </button>
 
-              {/* Logo and Title - Centered */}
-              <Link to="/" className="absolute left-1/2 transform -translate-x-1/2 flex items-center space-x-2 md:space-x-3">
+              {/* Logo - Centered */}
+              <Link to="/" className="absolute left-1/2 transform -translate-x-1/2 flex items-center">
                 <img
                   src={logoDark}
                   alt="La Kahina Logo"
                   className="h-7 md:h-9 w-auto"
                 />
-                <h1 className="text-base sm:text-xl md:text-2xl font-light text-[#6b5d52] uppercase tracking-[0.15em] md:tracking-[0.2em] whitespace-nowrap">
-                  LA KAHINA
-                </h1>
               </Link>
 
               {/* Book Button - Right */}

@@ -1,10 +1,54 @@
 import { Link } from 'react-router-dom'
-import { properties } from '../data/properties'
 import { experiences } from '../data/experiences'
 import { getR2Url } from '../config/r2-assets'
+import logoDark from '../assets/logo/LAKAHINA_FullLogo (black).png'
+import logoText from '../assets/logo/text.png'
 
-const landingVideo = getR2Url('7. La Kahina 24/KAHINA_16_9_1.mp4')
-const logoWhite = getR2Url('logo/logo white.png')
+// Video path - try different path structures
+// Option 1: landing/ (matching other asset patterns)
+const landingVideoPath1 = 'landing/Yedder World Page d\'acceuil - Réalisée avec Clipchamp_1732283144428.mp4'
+// Option 2: assets/lakahina/landing/ (as user specified)
+const landingVideoPath2 = 'assets/lakahina/landing/Yedder World Page d\'acceuil - Réalisée avec Clipchamp_1732283144428.mp4'
+
+// Try option 1 first (standard pattern), fallback to option 2; use proxy in dev to avoid CORS
+const landingVideo = getR2Url(landingVideoPath1, false, true)
+const landingVideoAlt = getR2Url(landingVideoPath2, true, true)
+
+// Debug logging and test URL accessibility
+if (import.meta.env.DEV) {
+  console.log('Landing video path (option 1):', landingVideoPath1)
+  console.log('Landing video URL (option 1):', landingVideo)
+  console.log('Landing video path (option 2):', landingVideoPath2)
+  console.log('Landing video URL (option 2):', landingVideoAlt)
+  
+  // Test if URL is accessible
+  fetch(landingVideo, { method: 'HEAD' })
+    .then(response => {
+      console.log('Video URL test (option 1):', {
+        status: response.status,
+        statusText: response.statusText,
+        ok: response.ok,
+        headers: Object.fromEntries(response.headers.entries())
+      })
+      if (!response.ok) {
+        console.warn('Option 1 failed, testing option 2...')
+        return fetch(landingVideoAlt, { method: 'HEAD' })
+      }
+      return response
+    })
+    .then(response => {
+      if (response) {
+        console.log('Video URL test (option 2):', {
+          status: response.status,
+          statusText: response.statusText,
+          ok: response.ok
+        })
+      }
+    })
+    .catch(error => {
+      console.error('Video URL fetch test error:', error)
+    })
+}
 
 function Home() {
   return (
@@ -13,17 +57,44 @@ function Home() {
       <section className="relative h-screen w-full overflow-hidden">
         {/* Video Background */}
         <video
+          src={landingVideo}
           autoPlay
           loop
           muted
           playsInline
           className="absolute inset-0 w-full h-full object-cover"
+          onError={(e) => {
+            const video = e.target as HTMLVideoElement
+            const error = video.error
+            console.error('Video load error:', {
+              errorCode: error?.code,
+              errorMessage: error?.message,
+              networkState: video.networkState,
+              readyState: video.readyState,
+              currentSrc: video.currentSrc,
+              src: video.src,
+              networkStateText: ['EMPTY', 'IDLE', 'LOADING', 'NO_SOURCE'][video.networkState],
+              readyStateText: ['HAVE_NOTHING', 'HAVE_METADATA', 'HAVE_CURRENT_DATA', 'HAVE_FUTURE_DATA', 'HAVE_ENOUGH_DATA'][video.readyState]
+            })
+            
+            // Try fallback URL if first one fails
+            if (video.currentSrc === landingVideo || video.src === landingVideo) {
+              console.log('Trying fallback video URL:', landingVideoAlt)
+              video.src = landingVideoAlt
+              video.load()
+            }
+          }}
+          onLoadStart={() => console.log('Video load started:', landingVideo)}
+          onCanPlay={() => console.log('Video can play successfully')}
+          onLoadedMetadata={() => console.log('Video metadata loaded')}
+          onLoadedData={() => console.log('Video data loaded')}
         >
           <source src={landingVideo} type="video/mp4" />
+          <source src={landingVideoAlt} type="video/mp4" />
         </video>
 
-        {/* Semi-transparent Header Bar */}
-        <div className="absolute top-0 left-0 right-0 z-30 bg-white/5 backdrop-blur-md border-b border-white/10">
+        {/* Fixed Header Bar - black logo throughout */}
+        <div className="fixed top-0 left-0 right-0 z-30 bg-white/90 backdrop-blur-md border-b border-gray-200/80">
           <div className="w-full px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between h-14 sm:h-16 md:h-20 relative">
               {/* Hamburger Menu - Left */}
@@ -32,7 +103,7 @@ function Home() {
                   const event = new CustomEvent('toggleMenu')
                   window.dispatchEvent(event)
                 }}
-                className="text-white hover:text-gray-200 transition-colors z-10"
+                className="text-gray-900 hover:text-gray-600 transition-colors z-10"
                 aria-label="Toggle menu"
               >
                 <svg
@@ -48,22 +119,19 @@ function Home() {
                 </svg>
               </button>
 
-              {/* Logo and Title - Centered */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center space-x-1.5 sm:space-x-2 md:space-x-3">
+              {/* Logo - Centered */}
+              <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center">
                 <img
-                  src={logoWhite}
+                  src={logoDark}
                   alt="La Kahina Logo"
                   className="h-5 sm:h-7 md:h-9 w-auto"
                 />
-                <h1 className="text-sm sm:text-lg md:text-2xl font-light text-white uppercase tracking-[0.1em] sm:tracking-[0.15em] md:tracking-[0.2em] whitespace-nowrap">
-                  LA KAHINA
-                </h1>
               </div>
 
               {/* Book Button - Right */}
               <Link
                 to="/join"
-                className="px-3 sm:px-5 md:px-7 py-1.5 sm:py-2 md:py-2.5 bg-white text-gray-900 rounded-full hover:bg-gray-50 transition-all font-medium uppercase tracking-wider text-[10px] sm:text-xs md:text-sm z-10"
+                className="px-3 sm:px-5 md:px-7 py-1.5 sm:py-2 md:py-2.5 bg-[#6b5d52] text-white rounded-full hover:bg-[#8b7d72] transition-all font-medium uppercase tracking-wider text-[10px] sm:text-xs md:text-sm z-10"
               >
                 Book
               </Link>
@@ -75,23 +143,62 @@ function Home() {
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/50" />
       </section>
 
-      {/* Hero Section - Luxury for the Soul */}
+      {/* Hero Section - Logo and Manifesto */}
       <section className="relative min-h-screen bg-white flex items-center justify-center py-32 px-6">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl text-[#6b5d52] mb-8 font-light tracking-wide">
-            Luxury for the Soul
-          </h1>
-          <p className="text-[#6b5d52] text-lg md:text-xl leading-relaxed max-w-3xl mx-auto font-light">
-            We are a global home for a global community of like-minded people seeking connection, 
-            inspiration and a better future together. Our experience is powered by music, wellness, 
-            art, adventure, food, learning and giving back. Through these pillars, we craft magical 
-            worlds in which strangers become friends and friends become family. This is what we call 
-            luxury for the soul.
-          </p>
+          {/* LAKAHINA Logo */}
+          <div className="mb-12 md:mb-16">
+            <img
+              src={logoText}
+              alt="LAKAHINA"
+              className="mx-auto h-auto w-auto max-w-md md:max-w-lg"
+            />
+          </div>
+
+          {/* Manifesto */}
+          <div className="text-[#6b5d52] text-base md:text-lg font-normal leading-relaxed space-y-2 md:space-y-3">
+            {/* First Stanza */}
+            <div className="space-y-2 md:space-y-3">
+              <p>We return.</p>
+              <p>We remember.</p>
+              <p>We are home</p>
+              <p>She rose from the dust</p>
+              <p>La Kahina,</p>
+              <p>queen of the desert.</p>
+              <p>She walked with fire.</p>
+              <p>Her daughters rise,</p>
+              <p>carried by the wind,</p>
+              <p>Embodying her spirit.</p>
+            </div>
+
+            {/* Spacing between stanzas */}
+            <div className="h-8 md:h-12"></div>
+
+            {/* Second Stanza */}
+            <div className="space-y-2 md:space-y-3">
+              <p>Firekeepers,</p>
+              <p>guardians of Sahar,</p>
+              <p>Enlightened by the moon.</p>
+              <p>Yes, We remember.</p>
+              <p>Dance with the elements, she whispers:</p>
+              
+              {/* Indented quoted section */}
+              <div className="pl-8 md:pl-12 space-y-1 md:space-y-2 mt-2 md:mt-3">
+                <p>&ldquo;call the water, the dust, the fire,</p>
+                <p>& the earth mother of them all&rdquo;</p>
+              </div>
+
+              <p>Remember, she said,</p>
+              <p>the freedom code of the desert.</p>
+              <p>We are nomads,</p>
+              <p>once again.</p>
+              <p>So it is.</p>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Our Homes Section */}
+      {/* Our Homes Section - Experiences horizontal scroll */}
       <section className="py-24 bg-[#f5f0eb]">
         <div className="max-w-[1600px] mx-auto px-6">
           <h2 className="font-serif text-4xl md:text-5xl text-[#6b5d52] text-center mb-20 font-light tracking-wide">
@@ -101,33 +208,54 @@ function Home() {
           {/* Horizontal Scrolling Container */}
           <div className="relative overflow-hidden">
             <div className="flex gap-6 animate-scroll-slow hover:pause-animation">
-              {/* Duplicate properties for infinite scroll effect */}
-              {[...properties, ...properties].map((property, index) => (
-                <Link
-                  key={`${property.id}-${index}`}
-                  to={`/property/${property.slug}`}
-                  className="group flex-shrink-0 w-[400px] bg-white"
-                >
-                  <div className="relative aspect-[4/5] overflow-hidden">
-                    <img
-                      src={property.image}
-                      alt={property.name}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
+              {/* Duplicate experiences for infinite scroll effect */}
+              {[...experiences, ...experiences].map((experience, index) =>
+                experience.comingSoon ? (
+                  <div
+                    key={`${experience.id}-${index}`}
+                    className="flex-shrink-0 w-[400px] bg-white rounded-lg overflow-hidden shadow-sm cursor-default"
+                  >
+                    <div className="relative aspect-[4/5] overflow-hidden">
+                      <img
+                        src={experience.image}
+                        alt={experience.title}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div className="p-8">
+                      <h3 className="font-sans text-sm uppercase tracking-[0.15em] mb-3 font-medium text-[#6b5d52]">
+                        {experience.label || experience.title}
+                      </h3>
+                      <p className="text-[#8b7d72] text-sm font-light">Coming soon</p>
+                    </div>
                   </div>
-                  <div className="p-8">
-                    <h3 className="font-sans text-sm uppercase tracking-[0.15em] mb-3 font-medium text-[#6b5d52]">
-                      {property.name} | {property.location}
-                    </h3>
-                    <p className="text-[#8b7d72] text-sm mb-6 font-light">
-                      {property.description}
-                    </p>
-                    <button className="inline-block text-[#6b5d52] font-medium uppercase tracking-[0.15em] text-xs border border-[#6b5d52] px-6 py-2.5 rounded-full hover:bg-[#6b5d52] hover:text-white transition-all duration-300">
-                      Discover {property.name}
-                    </button>
-                  </div>
-                </Link>
-              ))}
+                ) : (
+                  <Link
+                    key={`${experience.id}-${index}`}
+                    to={`/experiences/${experience.slug}`}
+                    className="group flex-shrink-0 w-[400px] bg-white rounded-lg overflow-hidden shadow-sm"
+                  >
+                    <div className="relative aspect-[4/5] overflow-hidden">
+                      <img
+                        src={experience.image}
+                        alt={experience.title}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                    </div>
+                    <div className="p-8">
+                      <h3 className="font-sans text-sm uppercase tracking-[0.15em] mb-3 font-medium text-[#6b5d52]">
+                        {experience.label || experience.title}
+                      </h3>
+                      <p className="text-[#8b7d72] text-sm mb-6 font-light line-clamp-2">
+                        {experience.description}
+                      </p>
+                      <span className="inline-block text-[#6b5d52] font-medium uppercase tracking-[0.15em] text-xs border border-[#6b5d52] px-6 py-2.5 rounded-full hover:bg-[#6b5d52] hover:text-white transition-all duration-300">
+                        Discover {experience.title.split(',')[0].trim()}
+                      </span>
+                    </div>
+                  </Link>
+                )
+              )}
             </div>
           </div>
         </div>
@@ -217,7 +345,7 @@ function Home() {
                 {experiences[1]?.description || 'An unforgettable evening celebrating the grand opening of Nobu Marrakech. A fusion of Japanese elegance and Moroccan hospitality set in a stunning desert landscape.'}
               </p>
               <Link
-                to={`/experience/${experiences[1]?.slug || 'nobu-marrakech'}`}
+                to={`/experiences/${experiences[1]?.slug || 'nobu-marrakech'}`}
                 className="inline-block text-[#6b5d52] font-medium uppercase tracking-[0.2em] text-sm border-b border-[#6b5d52] pb-1 hover:pb-2 transition-all"
               >
                 Discover More
@@ -243,7 +371,7 @@ function Home() {
             <div className="lg:sticky lg:top-32 lg:self-start">
               {experiences[0] && (
                 <Link
-                  to={`/experience/${experiences[0].slug}`}
+                  to={`/experiences/${experiences[0].slug}`}
                   className="group block"
                 >
                   <div className="aspect-[4/5] overflow-hidden rounded-lg mb-6">
@@ -281,7 +409,7 @@ function Home() {
                 {experiences.slice(1).map((experience) => (
                   <Link
                     key={experience.id}
-                    to={`/experience/${experience.slug}`}
+                    to={`/experiences/${experience.slug}`}
                     className="group block"
                   >
                     <div className="aspect-[16/10] overflow-hidden rounded-lg mb-6">

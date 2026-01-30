@@ -1,10 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { experiences } from '../data/experiences'
-import { getR2Url } from '../config/r2-assets'
-
-const logoWhite = getR2Url('logo/logo white.png')
-const logoDark = getR2Url('logo/logo.png')
+import logoDark from '../assets/logo/LAKAHINA_FullLogo (black).png'
 
 function Experiences() {
   const heroRef = useRef<HTMLElement>(null)
@@ -33,9 +30,9 @@ function Experiences() {
     'fixed top-0 left-0 right-0 z-30 border-b transition-colors duration-300 ease-out'
   const headerVariantClasses = isHeaderSolid
     ? 'bg-white border-gray-200 text-gray-900 shadow-sm'
-    : 'bg-transparent border-transparent text-white'
+    : 'bg-white/90 backdrop-blur-md border-gray-200/80 text-gray-900'
 
-  const iconColor = isHeaderSolid ? 'text-gray-900' : 'text-white'
+  const iconColor = 'text-gray-900'
 
   return (
     <div>
@@ -80,20 +77,13 @@ function Experiences() {
                 </svg>
               </button>
 
-              {/* Logo and Title - Centered */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center space-x-1.5 sm:space-x-2 md:space-x-3">
+              {/* Logo - Centered (black throughout) */}
+              <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center">
                 <img
-                  src={isHeaderSolid ? logoDark : logoWhite}
+                  src={logoDark}
                   alt="La Kahina Logo"
-                  className="h-5 sm:h-7 md:h-9 w-auto transition-all duration-300"
+                  className="h-5 sm:h-7 md:h-9 w-auto"
                 />
-                <h2
-                  className={`text-sm sm:text-lg md:text-2xl font-light uppercase tracking-[0.1em] sm:tracking-[0.15em] md:tracking-[0.2em] whitespace-nowrap transition-colors duration-300 ${
-                    isHeaderSolid ? 'text-gray-900' : 'text-white'
-                  }`}
-                >
-                  LA KAHINA
-                </h2>
               </div>
 
               {/* Spacer for right alignment */}
@@ -128,39 +118,74 @@ function Experiences() {
 
           {/* Experiences Grid - 2 Columns */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-12 lg:gap-16">
-            {experiences.map((experience) => (
-              <Link
-                key={experience.id}
-                to={`/experiences/${experience.slug}`}
-                className="relative group overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer"
-              >
-                <div className="relative aspect-[4/3] overflow-hidden">
-                  <img
-                    src={experience.image}
-                    alt={experience.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  {/* Default gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent transition-opacity duration-300 group-hover:opacity-0" />
-                  
-                  {/* Hover overlay with description */}
-                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-6 sm:p-8 md:p-12">
-                    <p className="text-white text-center text-sm sm:text-base md:text-lg leading-relaxed">
-                      {experience.description}
-                    </p>
-                  </div>
+            {experiences.map((experience) => {
+              // Debug logging
+              if (import.meta.env.DEV) {
+                console.log(`Experience: ${experience.title}, Image URL: ${experience.image}`)
+              }
 
-                  {/* Label at bottom - always visible */}
-                  <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8 md:p-10 text-center z-10">
-                    <p className="text-white uppercase tracking-[0.2em] sm:tracking-[0.25em] text-xs sm:text-sm md:text-base font-light opacity-100 group-hover:opacity-70 transition-opacity duration-300">
-                      {experience.label
-                        ? experience.label
-                        : `LA KAHINA ${experience.title.toUpperCase()}`}
-                    </p>
+              const isComingSoon = experience.comingSoon === true
+              const cardContent = (
+                <>
+                  <div className="relative aspect-[4/3] overflow-hidden bg-gray-200">
+                    <img
+                      src={experience.image}
+                      alt={experience.title}
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement
+                        console.error('Failed to load image:', {
+                          url: experience.image,
+                          experience: experience.title
+                        })
+                        target.style.opacity = '0'
+                      }}
+                      onLoad={() => {
+                        if (import.meta.env.DEV) {
+                          console.log('✓ Successfully loaded image for:', experience.title, 'URL:', experience.image)
+                        }
+                      }}
+                    />
+                    {/* Label at bottom - simple overlay */}
+                    <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8 md:p-10 text-center z-10 bg-gradient-to-t from-black/60 via-black/20 to-transparent">
+                      <p className="text-white uppercase tracking-[0.2em] sm:tracking-[0.25em] text-xs sm:text-sm md:text-base font-light drop-shadow-lg">
+                        {experience.label
+                          ? experience.label
+                          : `LA KAHINA ${experience.title.toUpperCase()}`}
+                      </p>
+                      {isComingSoon && (
+                        <p className="text-white/90 text-xs sm:text-sm mt-1 tracking-widest">
+                          Coming soon
+                        </p>
+                      )}
+                    </div>
                   </div>
-                </div>
-              </Link>
-            ))}
+                </>
+              )
+
+              if (isComingSoon) {
+                return (
+                  <div
+                    key={experience.id}
+                    className="relative overflow-hidden rounded-lg shadow-md cursor-not-allowed opacity-90"
+                    aria-disabled="true"
+                    title="Coming soon"
+                  >
+                    {cardContent}
+                  </div>
+                )
+              }
+
+              return (
+                <Link
+                  key={experience.id}
+                  to={`/experiences/${experience.slug}`}
+                  className="relative overflow-hidden rounded-lg shadow-md cursor-pointer"
+                >
+                  {cardContent}
+                </Link>
+              )
+            })}
           </div>
         </div>
       </section>

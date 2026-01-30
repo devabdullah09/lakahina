@@ -7,8 +7,10 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['DM Sans', '-apple-system', 'BlinkMacSystemFont', 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'],
-        serif: ['Playfair Display', 'serif'],
+        sans: ['Courier Prime', 'Courier New', 'monospace'],
+        serif: ['Courier Prime', 'Courier New', 'monospace'],
+        heading: ['Courier Prime', 'Courier New', 'monospace'],
+        mono: ['Courier Prime', 'Courier New', 'monospace'],
       },
     },
   },
