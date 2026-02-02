@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { useState, useRef, useEffect } from 'react'
 import { experiences } from '../data/experiences'
 import { getR2Url } from '../config/r2-assets'
 import logoDark from '../assets/logo/LAKAHINA_FullLogo (black).png'
@@ -13,6 +14,135 @@ const landingVideoPath2 = 'assets/lakahina/landing/Yedder World Page d\'acceuil 
 // Try option 1 first (standard pattern), fallback to option 2; use proxy in dev to avoid CORS
 const landingVideo = getR2Url(landingVideoPath1, false, true)
 const landingVideoAlt = getR2Url(landingVideoPath2, true, true)
+
+// About Us Section Component - Sahar Camp Style Layout
+function AboutUsSection() {
+  const textRef = useRef<HTMLDivElement>(null)
+  const [imageHeight, setImageHeight] = useState<number | null>(null)
+
+  useEffect(() => {
+    const updateHeight = () => {
+      if (textRef.current) {
+        const textHeight = textRef.current.offsetHeight
+        setImageHeight(textHeight)
+      }
+    }
+
+    updateHeight()
+    const timeout1 = setTimeout(updateHeight, 100)
+    const timeout2 = setTimeout(updateHeight, 500)
+    window.addEventListener('resize', updateHeight)
+
+    return () => {
+      window.removeEventListener('resize', updateHeight)
+      clearTimeout(timeout1)
+      clearTimeout(timeout2)
+    }
+  }, [])
+
+  return (
+    <section className="py-8 sm:py-10 md:py-12 bg-white">
+      <div className="max-w-6xl mx-auto px-6">
+        {/* 1. Heading */}
+        <div className="mb-8 sm:mb-10 md:mb-12">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-light italic text-[#6b5d52] leading-relaxed text-center max-w-5xl mx-auto">
+            La Kahina is a community born from the dust of <strong className="font-medium not-italic">Black Rock City</strong>.
+          </h2>
+        </div>
+
+        {/* 2. Text + Image - Matching Experience Detail Pattern */}
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 sm:gap-12 md:gap-16 items-start mb-8 sm:mb-10 md:mb-12 max-w-6xl mx-auto">
+          <div ref={textRef} className="lg:col-span-3 flex flex-col space-y-4 text-[#6b5d52] leading-loose font-light text-base sm:text-lg">
+            <p>
+              It emerged from a vision of cross-cultural encounters, weaving together the spirit of
+              the desert with the depth of Moroccan ancestral culture.
+            </p>
+            <p>
+              In a world of digital nomadism, La Kahina invites you to be not rootless, but{' '}
+              <strong className="font-medium">deeply rooted</strong> nomads—carrying home within, while the land holds you.
+            </p>
+          </div>
+          <div 
+            className="lg:col-span-2 flex flex-col justify-start w-full overflow-hidden rounded-lg shadow-lg"
+            style={imageHeight ? { height: `${imageHeight}px` } : { minHeight: '200px' }}
+          >
+            <img
+              src={getR2Url('experiences/5. La Kahina, 2025/gallery/97-DSCF8932.jpg')}
+              alt="La Kahina"
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+
+        {/* 3. A Full Image */}
+        <div className="mb-8 sm:mb-10 md:mb-12 w-full">
+          <div className="w-full aspect-[16/9] overflow-hidden rounded-lg">
+            <img
+              src={getR2Url('experiences/4. La Kahina, 2024/gallery/PHOTO-2024-06-04-09-46-51.jpg')}
+              alt="La Kahina"
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+
+        {/* 4. Text */}
+        <div className="mb-8 sm:mb-10 md:mb-12 max-w-6xl mx-auto">
+          <p className="text-base sm:text-lg text-[#6b5d52] leading-loose font-light text-left">
+            La Kahina is open and inclusive. Its values are inspired by the principles of
+            Burning Man: radical inclusion, gifting, decommodification, radical self-reliance,
+            radical self-expression, communal effort, civic responsibility, leave no trace, and
+            participation.
+          </p>
+        </div>
+
+        {/* 5. Three Images */}
+        <div className="grid grid-cols-3 gap-4 mb-8 sm:mb-10 md:mb-12 max-w-6xl mx-auto">
+          <div className="w-full aspect-square overflow-hidden rounded-lg shadow-lg">
+            <img
+              src={getR2Url('experiences/5. La Kahina, 2025/gallery/102-DSCF8939.jpg')}
+              alt="La Kahina"
+              className="w-full h-full object-cover"
+            />
+          </div>
+          <div className="w-full aspect-square overflow-hidden rounded-lg shadow-lg">
+            <img
+              src={getR2Url('experiences/1. La Kahina, 2023/gallery/DSC07088.jpg')}
+              alt="La Kahina"
+              className="w-full h-full object-cover"
+            />
+          </div>
+          <div className="w-full aspect-square overflow-hidden rounded-lg shadow-lg">
+            <img
+              src={getR2Url('experiences/2. Nobu Grand Opening, Marrakech/gallery/L1130283.jpg')}
+              alt="La Kahina"
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+
+        {/* 6. Text */}
+        <div className="mb-8 sm:mb-10 md:mb-12 max-w-6xl mx-auto">
+          <div className="space-y-3 text-[#6b5d52] text-base sm:text-lg leading-loose font-light">
+            <p className="font-medium text-xl md:text-2xl">More than an event, La Kahina is a home in movement.</p>
+            <p>A place where the land remembers you.</p>
+            <p>A community rooted in Desert, carried across the world.</p>
+          </div>
+        </div>
+
+        {/* 7. A Full Image */}
+        <div className="w-full max-w-6xl mx-auto">
+          <div className="w-full aspect-[16/9] overflow-hidden rounded-lg shadow-lg">
+            <img
+              src={getR2Url('experiences/3. Experience House, Marrakech/gallery/XH 5 Morocco-149.jpg')}
+              alt="La Kahina"
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
 
 // Debug logging and test URL accessibility
 if (import.meta.env.DEV) {
@@ -128,12 +258,12 @@ function Home() {
                 />
               </div>
 
-              {/* Book Button - Right */}
+              {/* Join Us Button - Right */}
               <Link
                 to="/join"
                 className="px-3 sm:px-5 md:px-7 py-1.5 sm:py-2 md:py-2.5 bg-[#6b5d52] text-white rounded-full hover:bg-[#8b7d72] transition-all font-medium uppercase tracking-wider text-[10px] sm:text-xs md:text-sm z-10"
               >
-                Book
+                Join Us
               </Link>
             </div>
           </div>
@@ -202,7 +332,7 @@ function Home() {
       <section className="py-24 bg-[#f5f0eb]">
         <div className="max-w-[1600px] mx-auto px-6">
           <h2 className="font-serif text-4xl md:text-5xl text-[#6b5d52] text-center mb-20 font-light tracking-wide">
-            Our Homes
+            Our Experiences
           </h2>
           
           {/* Horizontal Scrolling Container */}
@@ -264,13 +394,7 @@ function Home() {
       {/* Video Section - Our Story */}
       <section className="py-24 bg-[#f5f0eb]">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-12">
-            <div className="inline-block">
-              <p className="text-xs uppercase tracking-[0.25em] text-[#8b7d72] mb-4 font-medium">
-                — OUR STORY —
-              </p>
-            </div>
-          </div>
+          
           <div className="relative aspect-video max-w-5xl mx-auto rounded-lg overflow-hidden shadow-2xl">
             <video
               controls
@@ -284,222 +408,9 @@ function Home() {
         </div>
       </section>
 
-      {/* Signature Experiences Section */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="font-serif text-4xl md:text-5xl text-[#6b5d52] mb-6 font-light tracking-wide">
-              Signature Experiences
-            </h2>
-            <p className="text-[#8b7d72] text-lg max-w-3xl mx-auto font-light leading-relaxed">
-              Our brand experiences reflect our unique ethos, pillars and programming, showcasing 
-              the best of what our homes have to offer.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 max-w-5xl mx-auto mt-20">
-            {/* Experience 1 - with image */}
-            <div className="relative">
-              <img
-                src={experiences[0]?.image || getR2Url('7. La Kahina 24/Photography/PHOTO-2024-06-03-16-00-06.jpg')}
-                alt="Experience"
-                className="w-full aspect-[4/5] object-cover rounded-lg shadow-lg"
-              />
-            </div>
-            
-            <div className="flex items-center">
-              <div>
-                <h3 className="font-serif text-3xl md:text-4xl text-[#6b5d52] mb-6 font-light">
-                  Immersive Cultural Journeys
-                </h3>
-                <p className="text-[#8b7d72] text-base leading-relaxed mb-8 font-light">
-                  From music festivals in the desert to wellness retreats in the mountains, 
-                  our experiences are designed to connect you with the essence of each destination 
-                  and create lasting memories with our global community.
-                </p>
-                <Link
-                  to="/experiences"
-                  className="inline-block text-[#6b5d52] font-medium uppercase tracking-[0.2em] text-sm border-b border-[#6b5d52] pb-1 hover:pb-2 transition-all"
-                >
-                  Discover More
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* About Us Section - Sahar Camp Style */}
+      <AboutUsSection />
 
-      {/* Nobu Grand Opening Section */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-            <div className="order-2 md:order-1">
-              <div className="inline-block mb-6">
-                <div className="h-px w-16 bg-[#8b7d72] mb-6"></div>
-              </div>
-              <h2 className="font-serif text-4xl md:text-5xl text-[#6b5d52] mb-6 font-light">
-                {experiences[1]?.label || 'NOBU GRAND OPENING, MARRAKECH'}
-              </h2>
-              <div className="h-px w-16 bg-[#8b7d72] mb-8"></div>
-              <p className="text-[#8b7d72] text-lg leading-relaxed mb-8 font-light">
-                {experiences[1]?.description || 'An unforgettable evening celebrating the grand opening of Nobu Marrakech. A fusion of Japanese elegance and Moroccan hospitality set in a stunning desert landscape.'}
-              </p>
-              <Link
-                to={`/experiences/${experiences[1]?.slug || 'nobu-marrakech'}`}
-                className="inline-block text-[#6b5d52] font-medium uppercase tracking-[0.2em] text-sm border-b border-[#6b5d52] pb-1 hover:pb-2 transition-all"
-              >
-                Discover More
-              </Link>
-            </div>
-            
-            <div className="order-1 md:order-2">
-              <img
-                src={experiences[1]?.image || getR2Url('OUR EXPERIENCES/3. Nobu Grand Opening, Marrakech/Pictures/Selection/L1130283.jpg')}
-                alt="Nobu Grand Opening"
-                className="w-full aspect-[4/5] object-cover rounded-lg shadow-lg"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Our Stories Section */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-            {/* Left Side - Featured Story (Fixed) */}
-            <div className="lg:sticky lg:top-32 lg:self-start">
-              {experiences[0] && (
-                <Link
-                  to={`/experiences/${experiences[0].slug}`}
-                  className="group block"
-                >
-                  <div className="aspect-[4/5] overflow-hidden rounded-lg mb-6">
-                    <img
-                      src={experiences[0].image}
-                      alt={experiences[0].title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                  </div>
-                  <h3 className="font-sans text-xs uppercase tracking-[0.2em] text-[#6b5d52] mb-3 font-medium">
-                    {experiences[0].label}
-                  </h3>
-                  <p className="text-[#8b7d72] text-sm mb-4 font-light">
-                    By La Kahina Team
-                  </p>
-                  <p className="text-[#6b5d52] text-base leading-relaxed font-light">
-                    {experiences[0].description}
-                  </p>
-                </Link>
-              )}
-            </div>
-            
-            {/* Right Side - Header + Scrollable Stories */}
-            <div>
-              <div className="mb-12">
-                <h2 className="font-serif text-4xl md:text-5xl text-[#6b5d52] mb-6 font-light tracking-wide">
-                  OUR STORIES
-                </h2>
-                <p className="text-[#6b5d52] text-lg font-light leading-relaxed">
-                  Our stories define us, inspire us and unite us. Every journey is a story worth sharing.
-                </p>
-              </div>
-              
-              <div className="space-y-16">
-                {experiences.slice(1).map((experience) => (
-                  <Link
-                    key={experience.id}
-                    to={`/experiences/${experience.slug}`}
-                    className="group block"
-                  >
-                    <div className="aspect-[16/10] overflow-hidden rounded-lg mb-6">
-                      <img
-                        src={experience.image}
-                        alt={experience.title}
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                      />
-                    </div>
-                    <h3 className="font-sans text-xs uppercase tracking-[0.2em] text-[#6b5d52] mb-3 font-medium">
-                      {experience.label}
-                    </h3>
-                    <p className="text-[#8b7d72] text-sm mb-2 font-light">
-                      By La Kahina Team
-                    </p>
-                    <p className="text-[#6b5d52] text-base leading-relaxed font-light">
-                      {experience.description}
-                    </p>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Giving Back Section */}
-      <section className="py-24 bg-[#f5f0eb]">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-            <div>
-              <img
-                src={getR2Url('7. La Kahina 24/Photography/PHOTO-2024-06-03-16-00-02.jpg')}
-                alt="Giving Back"
-                className="w-full aspect-[4/5] object-cover rounded-lg shadow-lg"
-              />
-            </div>
-            
-            <div>
-              <h2 className="font-serif text-4xl md:text-5xl text-[#6b5d52] mb-6 font-light">
-                GIVING BACK
-              </h2>
-              <div className="h-px w-16 bg-[#8b7d72] mb-8"></div>
-              <p className="text-[#8b7d72] text-lg leading-relaxed mb-8 font-light">
-                Our La Kahina Rise is our global impact initiative focused on strengthening local 
-                communities, cultures and conservation efforts.
-              </p>
-              <Link
-                to="/about"
-                className="inline-block text-[#6b5d52] font-medium uppercase tracking-[0.2em] text-sm border-b border-[#6b5d52] pb-1 hover:pb-2 transition-all"
-              >
-                Learn More
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Our Sustainability Section */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-            <div className="order-2 md:order-1">
-              <h2 className="font-serif text-4xl md:text-5xl text-[#6b5d52] mb-6 font-light">
-                OUR SUSTAINABILITY
-              </h2>
-              <div className="h-px w-16 bg-[#8b7d72] mb-8"></div>
-              <p className="text-[#8b7d72] text-lg leading-relaxed mb-8 font-light">
-                Sustainability drives our decision-making; the materials we choose, the way we build, 
-                how we operate, and the local and global causes we support. We have one planet and it 
-                is our responsibility to protect it.
-              </p>
-              <Link
-                to="/about"
-                className="inline-block text-[#6b5d52] font-medium uppercase tracking-[0.2em] text-sm border-b border-[#6b5d52] pb-1 hover:pb-2 transition-all"
-              >
-                Learn More
-              </Link>
-            </div>
-            
-            <div className="order-1 md:order-2">
-              <img
-                src={getR2Url('7. La Kahina 24/Photography/PHOTO-2024-06-03-16-00-15.jpg')}
-                alt="Sustainability"
-                className="w-full aspect-[4/5] object-cover rounded-lg shadow-lg"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
     </div>
   )
 }

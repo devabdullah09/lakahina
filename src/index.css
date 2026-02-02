@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-
 /* Neue Haas Grotesk Display Font Faces */
 @font-face {
   font-family: 'Neue Haas Grotesk Display';
@@ -97,9 +95,9 @@ body {
   overflow-x: hidden;
 }
 
-/* Courier Prime for headings */
+/* Headings use the same font as "OUR STORY" */
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Courier Prime', 'Courier New', monospace;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 400;
 }
 
@@ -126,9 +124,9 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Neue Haas Grotesk Display', sans-serif;
 }
 
-/* Courier font utility classes */
+/* Heading font utility class (kept for compatibility) */
 .font-courier {
-  font-family: 'Courier Prime', 'Courier New', monospace;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 /* Experience detail typography */
@@ -137,14 +135,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .experience-content h2 {
-  font-family: 'Courier Prime', 'Courier New', monospace;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 400;
   letter-spacing: 0.02em;
   margin-bottom: 1.5rem;
 }
 
 .experience-content .section-title {
-  font-family: 'Courier Prime', 'Courier New', monospace;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 0.1em;

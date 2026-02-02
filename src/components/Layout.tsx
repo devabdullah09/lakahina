@@ -52,12 +52,12 @@ function Layout({ children }: LayoutProps) {
                 />
               </Link>
 
-              {/* Book Button - Right */}
+              {/* Join Us Button - Right */}
               <Link
                 to="/join"
                 className="px-5 md:px-7 py-2 md:py-2.5 bg-[#6b5d52] text-white rounded-full hover:bg-[#8b7d72] transition-all font-medium uppercase tracking-wider text-xs md:text-sm z-10"
               >
-                Book
+                Join Us
               </Link>
             </div>
           </div>

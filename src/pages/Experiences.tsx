@@ -6,14 +6,12 @@ import logoDark from '../assets/logo/LAKAHINA_FullLogo (black).png'
 function Experiences() {
   const heroRef = useRef<HTMLElement>(null)
   const [isHeaderSolid, setIsHeaderSolid] = useState(false)
-  const [scrollY, setScrollY] = useState(0)
 
   useEffect(() => {
     const handleScroll = () => {
       if (!heroRef.current) return
       const { bottom } = heroRef.current.getBoundingClientRect()
       setIsHeaderSolid(bottom <= 80)
-      setScrollY(window.scrollY)
     }
 
     window.addEventListener('scroll', handleScroll, { passive: true })
@@ -92,15 +90,6 @@ function Experiences() {
           </div>
         </div>
 
-        {/* Hero Content - Centered */}
-        <div className="relative h-full flex flex-col items-center justify-center z-20 px-4 sm:px-6">
-          <h1 
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-serif font-light text-white mb-6 sm:mb-8 text-center transition-opacity duration-300"
-            style={{ opacity: Math.max(0, 1 - scrollY / 300) }}
-          >
-            Our Experiences
-          </h1>
-        </div>
       </section>
 
       {/* Content Section */}
@@ -108,12 +97,17 @@ function Experiences() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-12 max-w-[1400px]">
           {/* Description Paragraph */}
           <div className="text-center mb-12 sm:mb-16 md:mb-20 lg:mb-24">
-            <p className="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed max-w-4xl mx-auto px-4">
-              Music, wellness, adventure, culture, food and learning are the pillars of the La Kahina
-              experience, creating magical worlds where strangers become friends and friends become family.
-              Get a glimpse into the diverse experiences available at our global destinations, reflecting
-              our unique ethos and the beauty of each location.
-            </p>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-light text-[#6b5d52] mb-6 sm:mb-8 font-serif">
+              La kahina
+            </h2>
+            <div className="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed max-w-4xl mx-auto px-4 space-y-4">
+              <p>
+                La Kahina is a cultural gathering rooted in Moroccan heritage and Burning Man principles.
+              </p>
+              <p>
+                It brings together art, music, ritual, and community to create intimate, transformative experiences between desert, city, and soul — where ancient traditions meet contemporary expression.
+              </p>
+            </div>
           </div>
 
           {/* Experiences Grid - 2 Columns */}

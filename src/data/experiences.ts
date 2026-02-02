@@ -19,32 +19,37 @@ const laKahinaBottom = getR2Url('7. La Kahina 24/Photography/PHOTO-2024-06-04-09
 const laKahinaVideo = getR2Url('7. La Kahina 24/KAHINA_16_9_1.mp4', false, true)
 
 // Nobu Grand Opening Images - Section images
-const nobuSection1Img = getR2Url('experiences/2. Nobu Grand Opening, Marrakech/gallery/L1130283.jpg')
-const nobuSection2Img = getR2Url('experiences/2. Nobu Grand Opening, Marrakech/gallery/L1130285.jpg')
+const nobuSection1Img = getR2Url('experiences/2. Nobu Grand Opening, Marrakech/gallery/L1130465.jpg')
+const nobuSection2Img = getR2Url('experiences/2. Nobu Grand Opening, Marrakech/gallery/L1130440.jpg')
+const nobuSection3Img = getR2Url('experiences/2. Nobu Grand Opening, Marrakech/gallery/L1130337.jpg')
+const nobuSection4Img = getR2Url('experiences/2. Nobu Grand Opening, Marrakech/gallery/L1130331.jpg')
 // Video - from Nobu Grand Opening experience folder
 const nobuVideo = getR2Url('experiences/2. Nobu Grand Opening, Marrakech/Event Bedouin(Nobu).mp4', false, true)
 
 // La Kahina 2023 Images - Section images
-const laKahina2023Section1Img = getR2Url('experiences/1. La Kahina, 2023/gallery/DSC07088.jpg')
-const laKahina2023Section2Img = getR2Url('experiences/1. La Kahina, 2023/gallery/DSC07059.JPG')
+const laKahina2023Section1Img = getR2Url('experiences/1. La Kahina, 2023/gallery/DSC07918.jpg')
+const laKahina2023Section2Img = getR2Url('experiences/1. La Kahina, 2023/gallery/DSC07126.jpg')
+const laKahina2023Section3Img = getR2Url('experiences/1. La Kahina, 2023/gallery/DSC07088.jpg')
+const laKahina2023Section4Img = getR2Url('experiences/1. La Kahina, 2023/gallery/DSC06617.jpg')
 // Video - full path as in R2; fallback = standard path
 const laKahina2023Video = getR2Url('assets/lakahina/experiences/1. La Kahina, 2023/saharartcamp v4.mp4', true, true)
 const laKahina2023VideoFallback = getR2Url('experiences/1. La Kahina, 2023/saharartcamp v4.mp4', false, true)
 
 // La Kahina 2024 Images - Section images
-const laKahina2024Section1Img = getR2Url('experiences/4. La Kahina, 2024/gallery/PHOTO-2024-06-03-15-59-57.jpg')
-const laKahina2024Section2Img = getR2Url('experiences/4. La Kahina, 2024/gallery/PHOTO-2024-06-03-16-00-02.jpg')
-const laKahina2024Section3Img = getR2Url('experiences/4. La Kahina, 2024/gallery/PHOTO-2024-06-03-16-00-10.jpg')
+const laKahina2024Section1Img = getR2Url('experiences/4. La Kahina, 2024/gallery/PHOTO-2024-06-04-09-46-51.jpg')
+const laKahina2024Section2Img = getR2Url('experiences/4. La Kahina, 2024/gallery/PHOTO-2024-06-03-16-00-16(1).jpg')
+const laKahina2024Section3Img = getR2Url('experiences/4. La Kahina, 2024/gallery/PHOTO-2024-06-03-16-00-04(1).jpg')
+const laKahina2024Section4Img = getR2Url('experiences/4. La Kahina, 2024/gallery/PHOTO-2024-06-03-16-00-10.jpg')
+const laKahina2024Section5Img = getR2Url('experiences/4. La Kahina, 2024/gallery/PHOTO-2024-06-03-16-00-02(1).jpg')
 // Video - full path as in R2; fallback = standard path
 const laKahina2024Video = getR2Url('assets/lakahina/experiences/4. La Kahina, 2024/KAHINA_16_9_1 (1).mp4', true, true)
 const laKahina2024VideoFallback = getR2Url('experiences/4. La Kahina, 2024/KAHINA_16_9_1 (1).mp4', false, true)
 
-// La Kahina 2025 Images - Section images (5 sections)
-const laKahina2025Section1Img = getR2Url('experiences/5. La Kahina, 2025/gallery/97-DSCF8932.jpg')
-const laKahina2025Section2Img = getR2Url('experiences/5. La Kahina, 2025/gallery/102-DSCF8939.jpg')
-const laKahina2025Section3Img = getR2Url('experiences/5. La Kahina, 2025/gallery/15-DSCF8824.jpg')
-const laKahina2025Section4Img = getR2Url('experiences/5. La Kahina, 2025/gallery/187-DSCF9108.jpg')
-const laKahina2025Section5Img = getR2Url('experiences/5. La Kahina, 2025/gallery/277-DSCF9253.jpg')
+// La Kahina 2025 Images - Section images
+const laKahina2025Section1Img = getR2Url('experiences/5. La Kahina, 2025/gallery/353-DSCF9364.jpg')
+const laKahina2025Section2Img = getR2Url('experiences/5. La Kahina, 2025/gallery/217-DSCF9156.jpg')
+const laKahina2025Section3Img = getR2Url('experiences/5. La Kahina, 2025/gallery/83-DSCF8916.jpg')
+const laKahina2025Section4Img = getR2Url('experiences/5. La Kahina, 2025/gallery/67-DSCF8898.jpg')
 
 // Nobu Grand Opening Gallery Images
 const nobuGallery = [
@@ -235,8 +240,8 @@ const laKahina2025Gallery = [
 ]
 
 // Experience House Images - Section images and gallery
-const experienceHouseSection1Img = getR2Url('experiences/3. Experience House, Marrakech/gallery/XH 5 Morocco-134.jpg')
-const experienceHouseSection2Img1 = getR2Url('experiences/3. Experience House, Marrakech/gallery/XH 5 Morocco-136.jpg')
+const experienceHouseSection1Img = getR2Url('experiences/3. Experience House, Marrakech/gallery/XH 5 Morocco-151.jpg')
+const experienceHouseSection2Img1 = getR2Url('experiences/3. Experience House, Marrakech/gallery/XH 5 Morocco-145.jpg')
 const experienceHouseSection2Img2 = getR2Url('experiences/3. Experience House, Marrakech/gallery/XH 5 Morocco-138.jpg')
 const experienceHouseVideo = getR2Url('OUR EXPERIENCES/5. Experience House, Marrakech/XH x Sahar.mp4', false, true)
 
@@ -303,7 +308,7 @@ This exceptional evening celebrated not only cultural heritage but also the shar
       'An unforgettable evening celebrating the grand opening of Nobu Marrakech. A fusion of Japanese elegance and Moroccan hospitality set in a stunning desert landscape.',
     image: nobuLanding,
     video: nobuVideo,
-    images: [nobuSection1Img, nobuSection2Img],
+    images: [nobuSection1Img, nobuSection2Img, nobuSection3Img, nobuSection4Img],
     gallery: nobuGallery,
     fullDescription: {
       subtitle: 'Sunset experience',
@@ -338,7 +343,7 @@ A night of transcendence and celebration, where diverse worlds unite in the hear
     image: laKahina2023Landing,
     video: laKahina2023Video,
     videoFallbackUrls: [laKahina2023VideoFallback],
-    images: [laKahina2023Section1Img, laKahina2023Section2Img],
+    images: [laKahina2023Section1Img, laKahina2023Section2Img, laKahina2023Section3Img, laKahina2023Section4Img],
     gallery: laKahina2023Gallery,
     fullDescription: {
       subtitle: 'Fundraiser event in Marrakech',
@@ -371,7 +376,7 @@ Immersed in art, authenticity and nature. You touched ground to its more profoun
     image: laKahina2024Landing,
     video: laKahina2024Video,
     videoFallbackUrls: [laKahina2024VideoFallback],
-    images: [laKahina2024Section1Img, laKahina2024Section2Img, laKahina2024Section3Img],
+    images: [laKahina2024Section1Img, laKahina2024Section2Img, laKahina2024Section3Img, laKahina2024Section4Img, laKahina2024Section5Img],
     gallery: laKahina2024Gallery,
     fullDescription: {
       subtitle: 'La Kahina: Private Gathering in Marrakech',
@@ -443,7 +448,7 @@ La Kahina fosters a unique cross-cultural dialogue, celebrating Moroccan artistr
       'A 4-day immersive cultural gathering blending Burning Man ethos with Moroccan ancestral heritage and contemporary artistic expression.',
     image: laKahina2025Landing,
     video: laKahinaVideo,
-    images: [laKahina2025Section1Img, laKahina2025Section2Img, laKahina2025Section3Img, laKahina2025Section4Img, laKahina2025Section5Img],
+    images: [laKahina2025Section1Img, laKahina2025Section2Img, laKahina2025Section3Img, laKahina2025Section4Img, laKahina2025Section3Img],
     gallery: laKahina2025Gallery,
     fullDescription: {
       subtitle: 'La Kahina 2025 – Private Gathering in Marrakech',
