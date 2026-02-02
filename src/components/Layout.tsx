@@ -18,9 +18,9 @@ function Layout({ children }: LayoutProps) {
       
       {/* Top Navigation Bar */}
       {!isHomePage && (
-        <nav className="fixed top-0 left-0 right-0 z-30 bg-white border-b border-gray-200">
-          <div className="w-full px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center justify-between h-16 sm:h-20 relative">
+        <nav className="fixed top-0 left-0 right-0 z-30 bg-white border-b border-gray-200 safe-area-inset-top">
+          <div className="w-full px-4 sm:px-6 lg:px-8 max-w-[100vw]">
+            <div className="flex items-center justify-between h-14 sm:h-16 md:h-20 relative min-h-[44px]">
               {/* Hamburger Menu - Left */}
               <button
                 onClick={() => {
@@ -55,7 +55,7 @@ function Layout({ children }: LayoutProps) {
               {/* Join Us Button - Right */}
               <Link
                 to="/join"
-                className="px-5 md:px-7 py-2 md:py-2.5 bg-[#6b5d52] text-white rounded-full hover:bg-[#8b7d72] transition-all font-medium uppercase tracking-wider text-xs md:text-sm z-10"
+                className="px-4 sm:px-5 md:px-7 py-2 sm:py-2.5 bg-[#6b5d52] text-white rounded-full hover:bg-[#8b7d72] transition-all font-medium uppercase tracking-wider text-xs sm:text-sm z-10 min-h-[44px] inline-flex items-center justify-center"
               >
                 Join Us
               </Link>
@@ -64,7 +64,7 @@ function Layout({ children }: LayoutProps) {
         </nav>
       )}
 
-      <main className={`flex-grow ${!isHomePage ? 'pt-16 sm:pt-20' : ''}`}>{children}</main>
+      <main className={`flex-grow w-full max-w-[100vw] overflow-x-hidden ${!isHomePage ? 'pt-14 sm:pt-16 md:pt-20' : ''}`}>{children}</main>
       <Footer />
     </div>
   )

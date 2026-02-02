@@ -91,9 +91,19 @@ img {
 }
 
 /* Prevent horizontal scroll on mobile */
-body {
+html, body {
   overflow-x: hidden;
+  max-width: 100vw;
 }
+
+/* Safe area for notched devices (mobile) */
+@supports (padding: env(safe-area-inset-top)) {
+  .safe-area-inset-top {
+    padding-top: env(safe-area-inset-top);
+  }
+}
+
+/* Touch-friendly: ensure interactive elements have enough tap area on mobile (handled per-component with Tailwind) */
 
 /* Headings use the same font as "OUR STORY" */
 h1, h2, h3, h4, h5, h6 {

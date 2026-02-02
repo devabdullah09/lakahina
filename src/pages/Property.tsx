@@ -9,7 +9,7 @@ function Property() {
     return (
       <div className="pt-16 sm:pt-20 min-h-screen flex items-center justify-center px-4">
         <div className="text-center">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-light mb-4">Property Not Found</h1>
+          <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light mb-4">Property Not Found</h1>
           <Link to="/" className="text-gray-600 hover:text-gray-900 underline text-sm sm:text-base">
             Return to Home
           </Link>
@@ -19,32 +19,32 @@ function Property() {
   }
 
   return (
-    <div className="pt-16 sm:pt-20">
+    <div className="pt-16 sm:pt-20 min-h-screen">
       {/* Hero Image */}
-      <section className="relative h-[50vh] sm:h-[60vh] md:h-[70vh] overflow-hidden">
+      <section className="relative min-h-[40vh] h-[50vh] sm:h-[60vh] md:h-[70vh] overflow-hidden">
         <img
           src={property.image}
           alt={property.name}
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-        <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8 lg:p-16 text-white">
+        <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 md:p-8 lg:p-12 xl:p-16 text-white">
           <div className="container mx-auto">
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-7xl font-light mb-3 sm:mb-4">
+            <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-7xl font-light mb-2 sm:mb-3 md:mb-4">
               {property.name} | {property.location}
             </h1>
-            <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-white/90">{property.description}</p>
+            <p className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl text-white/90 line-clamp-2 sm:line-clamp-none">{property.description}</p>
           </div>
         </div>
       </section>
 
       {/* Property Details */}
-      <section className="py-12 sm:py-16 md:py-20 bg-white">
+      <section className="py-8 sm:py-12 md:py-16 lg:py-20 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <div className="prose prose-lg max-w-none">
-              <h2 className="text-2xl sm:text-3xl font-light mb-4 sm:mb-6 text-gray-900">About {property.name}</h2>
-              <p className="text-sm sm:text-base text-gray-600 leading-relaxed mb-6 sm:mb-8">
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-light mb-3 sm:mb-4 md:mb-6 text-gray-900">About {property.name}</h2>
+              <p className="text-sm sm:text-base text-gray-600 leading-relaxed mb-4 sm:mb-6 md:mb-8">
                 Experience the magic of {property.name}, located in the heart of {property.location}.
                 {property.description} This unique destination offers an unparalleled experience
                 that combines luxury, adventure, and connection with nature and local culture.
@@ -98,10 +98,10 @@ function Property() {
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                   </div>
-                  <h3 className="text-base sm:text-lg font-medium text-gray-900 mb-1">
+                  <h3 className="text-sm sm:text-base md:text-lg font-medium text-gray-900 mb-1">
                     {relatedProperty.name} | {relatedProperty.location}
                   </h3>
-                  <p className="text-gray-600 text-xs sm:text-sm">{relatedProperty.description}</p>
+                  <p className="text-gray-600 text-xs sm:text-sm line-clamp-2">{relatedProperty.description}</p>
                 </Link>
               ))}
           </div>

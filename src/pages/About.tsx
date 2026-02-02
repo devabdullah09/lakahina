@@ -40,7 +40,7 @@ function SectionWithImage({
   const imagesToShow = images && Array.isArray(images) && images.length > 0 ? images.filter(Boolean) : []
 
   return (
-    <div className={`grid grid-cols-1 ${imagesToShow.length > 0 ? 'lg:grid-cols-5' : ''} gap-8 sm:gap-12 md:gap-16 items-start mb-8 sm:mb-10 md:mb-12 max-w-6xl mx-auto`}>
+    <div className={`grid grid-cols-1 ${imagesToShow.length > 0 ? 'lg:grid-cols-5' : ''} gap-6 sm:gap-8 md:gap-12 lg:gap-16 items-start mb-6 sm:mb-8 md:mb-10 lg:mb-12 max-w-6xl mx-auto px-0`}>
       {imagesToShow.length > 0 && (
         <div
           ref={imageContainerRef}
@@ -69,11 +69,11 @@ function SectionWithImage({
 
       <div ref={textRef} className={`${imagesToShow.length > 0 ? 'lg:col-span-3' : ''} ${isImageLeft ? 'lg:order-2' : 'lg:order-1'} flex flex-col`}>
         {title && (
-          <h2 className="section-title font-courier text-2xl sm:text-3xl md:text-4xl text-[#6b5d52] mb-8 font-normal uppercase tracking-wide text-left">
+          <h2 className="section-title font-courier text-xl sm:text-2xl md:text-3xl lg:text-4xl text-[#6b5d52] mb-6 sm:mb-8 font-normal uppercase tracking-wide text-left">
             {title}
           </h2>
         )}
-        <div className="text-[#6b5d52] text-base sm:text-lg leading-loose font-light space-y-4 flex-1">
+        <div className="text-[#6b5d52] text-sm sm:text-base md:text-lg leading-loose font-light space-y-4 flex-1">
           {typeof content === 'string' ? (
             <div className="space-y-4">
               {content.split('\n').map((line, idx) => (
@@ -100,10 +100,10 @@ function About() {
   const partnersImage = getR2Url('experiences/5. La Kahina, 2025/gallery/217-DSCF9156.jpg')
 
   return (
-    <div className="pt-16 sm:pt-20">
+    <div className="pt-16 sm:pt-20 min-h-screen">
       {/* Hero / About Us Section */}
-      <section className="relative py-8 sm:py-10 md:py-12 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-6 sm:py-8 md:py-10 lg:py-12 bg-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
           {/* First Section: Title and Introduction with Image */}
           <SectionWithImage
             title="About Us — La Kahina"
@@ -168,9 +168,9 @@ function About() {
           <SectionWithImage
             content={
               <div className="pt-4 space-y-3">
-                <p className="font-medium text-xl md:text-2xl">More than an event, La Kahina is a home in movement.</p>
-                <p className="text-lg">A place where the land remembers you.</p>
-                <p className="text-lg">A community rooted in Desert, carried across the world.</p>
+                <p className="font-medium text-lg sm:text-xl md:text-2xl">More than an event, La Kahina is a home in movement.</p>
+                <p className="text-base sm:text-lg">A place where the land remembers you.</p>
+                <p className="text-base sm:text-lg">A community rooted in Desert, carried across the world.</p>
               </div>
             }
             images={[aboutImage4]}
@@ -180,8 +180,8 @@ function About() {
       </section>
 
       {/* Community Section */}
-      <section className="py-8 sm:py-10 md:py-12 border-t border-gray-100 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-6 sm:py-8 md:py-10 lg:py-12 border-t border-gray-100 bg-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
           <SectionWithImage
             title="Community"
             content={
@@ -212,8 +212,8 @@ function About() {
       </section>
 
       {/* Artists Section */}
-      <section className="py-8 sm:py-10 md:py-12 border-t border-gray-100 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-6 sm:py-8 md:py-10 lg:py-12 border-t border-gray-100 bg-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
           <SectionWithImage
             title="Artists"
             content={
@@ -237,8 +237,8 @@ function About() {
       </section>
 
       {/* Partners & Previous Collaborators Section */}
-      <section className="py-8 sm:py-10 md:py-12 border-t border-gray-100 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-6 sm:py-8 md:py-10 lg:py-12 border-t border-gray-100 bg-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
           <SectionWithImage
             title="Partners & Previous Collaborators"
             content={

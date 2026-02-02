@@ -19,11 +19,11 @@ function Header() {
     <>
       {/* Side Navigation Menu - light bg for black logo */}
       <div
-        className={`fixed top-0 left-0 h-full w-full sm:w-[33.333%] sm:min-w-[320px] sm:max-w-[480px] bg-white border-r border-gray-200 z-50 transform transition-transform duration-300 ease-in-out ${
+        className={`fixed top-0 left-0 h-full w-[min(100vw,400px)] sm:w-[33.333%] sm:min-w-[320px] sm:max-w-[480px] bg-white border-r border-gray-200 z-50 transform transition-transform duration-300 ease-in-out ${
           isMenuOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
-        <div className="flex flex-col h-full p-6 sm:p-8 md:p-12">
+        <div className="flex flex-col h-full p-5 sm:p-6 md:p-8 lg:p-12 overflow-y-auto">
           {/* Header with Logo and Close Button */}
           <div className="flex items-start justify-between mb-12 sm:mb-16 md:mb-20">
             {/* Logo */}

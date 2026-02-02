@@ -2,10 +2,10 @@ import { Link } from 'react-router-dom'
 
 function Footer() {
   return (
-    <footer className="bg-[#6b5d52] text-white">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+    <footer className="bg-[#6b5d52] text-white w-full max-w-[100vw] overflow-x-hidden">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 md:py-16">
         {/* Main Footer Content - Grid Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 lg:gap-12 mb-8 sm:mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 md:gap-10 lg:gap-12 mb-6 sm:mb-8 md:mb-12">
           {/* About Section */}
           <div className="lg:col-span-2">
             <h3 className="text-base sm:text-lg font-light mb-4 sm:mb-6 uppercase tracking-wider">La Kahina</h3>

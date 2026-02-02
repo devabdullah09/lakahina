@@ -37,7 +37,7 @@ function Experiences() {
       {/* Hero Section with Background Image */}
       <section
         ref={heroRef}
-        className="relative h-[70vh] md:h-[80vh] w-full overflow-hidden"
+        className="relative min-h-[50vh] h-[60vh] sm:h-[70vh] md:h-[80vh] w-full overflow-hidden"
       >
         {/* Background Image */}
         <div className="absolute inset-0">
@@ -93,14 +93,14 @@ function Experiences() {
       </section>
 
       {/* Content Section */}
-      <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-gradient-to-b from-gray-50 to-gray-100">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-12 max-w-[1400px]">
+      <section className="py-8 sm:py-12 md:py-16 lg:py-20 xl:py-24 bg-gradient-to-b from-gray-50 to-gray-100">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 max-w-[1400px]">
           {/* Description Paragraph */}
-          <div className="text-center mb-12 sm:mb-16 md:mb-20 lg:mb-24">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-light text-[#6b5d52] mb-6 sm:mb-8 font-serif">
+          <div className="text-center mb-8 sm:mb-12 md:mb-16 lg:mb-20 xl:mb-24">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light text-[#6b5d52] mb-4 sm:mb-6 md:mb-8 font-serif">
               La kahina
             </h2>
-            <div className="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed max-w-4xl mx-auto px-4 space-y-4">
+            <div className="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed max-w-4xl mx-auto px-2 sm:px-4 space-y-3 sm:space-y-4">
               <p>
                 La Kahina is a cultural gathering rooted in Moroccan heritage and Burning Man principles.
               </p>
@@ -111,7 +111,7 @@ function Experiences() {
           </div>
 
           {/* Experiences Grid - 2 Columns */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-12 lg:gap-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 lg:gap-12 xl:gap-16">
             {experiences.map((experience) => {
               // Debug logging
               if (import.meta.env.DEV) {
@@ -141,8 +141,8 @@ function Experiences() {
                       }}
                     />
                     {/* Label at bottom - simple overlay */}
-                    <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8 md:p-10 text-center z-10 bg-gradient-to-t from-black/60 via-black/20 to-transparent">
-                      <p className="text-white uppercase tracking-[0.2em] sm:tracking-[0.25em] text-xs sm:text-sm md:text-base font-light drop-shadow-lg">
+                    <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 md:p-8 lg:p-10 text-center z-10 bg-gradient-to-t from-black/60 via-black/20 to-transparent">
+                      <p className="text-white uppercase tracking-[0.15em] sm:tracking-[0.2em] md:tracking-[0.25em] text-xs sm:text-sm md:text-base font-light drop-shadow-lg">
                         {experience.label
                           ? experience.label
                           : `LA KAHINA ${experience.title.toUpperCase()}`}

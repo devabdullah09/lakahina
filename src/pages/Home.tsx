@@ -42,16 +42,16 @@ function AboutUsSection() {
 
   return (
     <section className="py-8 sm:py-10 md:py-12 bg-white">
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* 1. Heading */}
-        <div className="mb-8 sm:mb-10 md:mb-12">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-light italic text-[#6b5d52] leading-relaxed text-center max-w-5xl mx-auto">
+        <div className="mb-6 sm:mb-8 md:mb-10 lg:mb-12">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light italic text-[#6b5d52] leading-relaxed text-center max-w-5xl mx-auto">
             La Kahina is a community born from the dust of <strong className="font-medium not-italic">Black Rock City</strong>.
           </h2>
         </div>
 
         {/* 2. Text + Image - Matching Experience Detail Pattern */}
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 sm:gap-12 md:gap-16 items-start mb-8 sm:mb-10 md:mb-12 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 sm:gap-8 md:gap-12 lg:gap-16 items-start mb-6 sm:mb-8 md:mb-10 lg:mb-12 max-w-6xl mx-auto">
           <div ref={textRef} className="lg:col-span-3 flex flex-col space-y-4 text-[#6b5d52] leading-loose font-light text-base sm:text-lg">
             <p>
               It emerged from a vision of cross-cultural encounters, weaving together the spirit of
@@ -75,7 +75,7 @@ function AboutUsSection() {
         </div>
 
         {/* 3. A Full Image */}
-        <div className="mb-8 sm:mb-10 md:mb-12 w-full">
+        <div className="mb-6 sm:mb-8 md:mb-10 lg:mb-12 w-full">
           <div className="w-full aspect-[16/9] overflow-hidden rounded-lg">
             <img
               src={getR2Url('experiences/4. La Kahina, 2024/gallery/PHOTO-2024-06-04-09-46-51.jpg')}
@@ -86,8 +86,8 @@ function AboutUsSection() {
         </div>
 
         {/* 4. Text */}
-        <div className="mb-8 sm:mb-10 md:mb-12 max-w-6xl mx-auto">
-          <p className="text-base sm:text-lg text-[#6b5d52] leading-loose font-light text-left">
+        <div className="mb-6 sm:mb-8 md:mb-10 lg:mb-12 max-w-6xl mx-auto">
+          <p className="text-sm sm:text-base md:text-lg text-[#6b5d52] leading-loose font-light text-left">
             La Kahina is open and inclusive. Its values are inspired by the principles of
             Burning Man: radical inclusion, gifting, decommodification, radical self-reliance,
             radical self-expression, communal effort, civic responsibility, leave no trace, and
@@ -96,7 +96,7 @@ function AboutUsSection() {
         </div>
 
         {/* 5. Three Images */}
-        <div className="grid grid-cols-3 gap-4 mb-8 sm:mb-10 md:mb-12 max-w-6xl mx-auto">
+        <div className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-6 mb-6 sm:mb-8 md:mb-10 lg:mb-12 max-w-6xl mx-auto">
           <div className="w-full aspect-square overflow-hidden rounded-lg shadow-lg">
             <img
               src={getR2Url('experiences/5. La Kahina, 2025/gallery/102-DSCF8939.jpg')}
@@ -121,9 +121,9 @@ function AboutUsSection() {
         </div>
 
         {/* 6. Text */}
-        <div className="mb-8 sm:mb-10 md:mb-12 max-w-6xl mx-auto">
-          <div className="space-y-3 text-[#6b5d52] text-base sm:text-lg leading-loose font-light">
-            <p className="font-medium text-xl md:text-2xl">More than an event, La Kahina is a home in movement.</p>
+        <div className="mb-6 sm:mb-8 md:mb-10 lg:mb-12 max-w-6xl mx-auto">
+          <div className="space-y-3 text-[#6b5d52] text-sm sm:text-base md:text-lg leading-loose font-light">
+            <p className="font-medium text-lg sm:text-xl md:text-2xl">More than an event, La Kahina is a home in movement.</p>
             <p>A place where the land remembers you.</p>
             <p>A community rooted in Desert, carried across the world.</p>
           </div>
@@ -274,19 +274,19 @@ function Home() {
       </section>
 
       {/* Hero Section - Logo and Manifesto */}
-      <section className="relative min-h-screen bg-white flex items-center justify-center py-32 px-6">
+      <section className="relative min-h-screen bg-white flex items-center justify-center py-16 sm:py-24 md:py-32 px-4 sm:px-6">
         <div className="max-w-4xl mx-auto text-center">
           {/* LAKAHINA Logo */}
-          <div className="mb-12 md:mb-16">
+          <div className="mb-8 sm:mb-12 md:mb-16">
             <img
               src={logoText}
               alt="LAKAHINA"
-              className="mx-auto h-auto w-auto max-w-md md:max-w-lg"
+              className="mx-auto h-auto w-auto max-w-[85vw] sm:max-w-md md:max-w-lg"
             />
           </div>
 
           {/* Manifesto */}
-          <div className="text-[#6b5d52] text-base md:text-lg font-normal leading-relaxed space-y-2 md:space-y-3">
+          <div className="text-[#6b5d52] text-sm sm:text-base md:text-lg font-normal leading-relaxed space-y-2 md:space-y-3">
             {/* First Stanza */}
             <div className="space-y-2 md:space-y-3">
               <p>We return.</p>
@@ -313,7 +313,7 @@ function Home() {
               <p>Dance with the elements, she whispers:</p>
               
               {/* Indented quoted section */}
-              <div className="pl-8 md:pl-12 space-y-1 md:space-y-2 mt-2 md:mt-3">
+              <div className="pl-4 sm:pl-6 md:pl-12 space-y-1 md:space-y-2 mt-2 md:mt-3">
                 <p>&ldquo;call the water, the dust, the fire,</p>
                 <p>& the earth mother of them all&rdquo;</p>
               </div>
@@ -392,8 +392,8 @@ function Home() {
       </section>
 
       {/* Video Section - Our Story */}
-      <section className="py-24 bg-[#f5f0eb]">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="py-12 sm:py-16 md:py-24 bg-[#f5f0eb]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="relative aspect-video max-w-5xl mx-auto rounded-lg overflow-hidden shadow-2xl">
             <video

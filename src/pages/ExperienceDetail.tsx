@@ -138,7 +138,7 @@ function SectionWithImage({
   const imagesToShow = images && Array.isArray(images) && images.length > 0 ? images.filter(Boolean) : []
 
   return (
-    <div className={`grid grid-cols-1 ${imagesToShow.length > 0 ? 'lg:grid-cols-5' : ''} gap-8 sm:gap-12 md:gap-16 items-start mb-16 sm:mb-20 md:mb-24 max-w-6xl mx-auto`}>
+    <div className={`grid grid-cols-1 ${imagesToShow.length > 0 ? 'lg:grid-cols-5' : ''} gap-6 sm:gap-8 md:gap-12 lg:gap-16 items-start mb-10 sm:mb-14 md:mb-20 lg:mb-24 max-w-6xl mx-auto`}>
       {/* Image Column - Only render if images exist */}
       {imagesToShow.length > 0 && (
         <div
@@ -169,11 +169,11 @@ function SectionWithImage({
       {/* Text Column - Heading is at the top, aligned with image */}
       <div ref={textRef} className={`${imagesToShow.length > 0 ? 'lg:col-span-3' : ''} ${isImageLeft ? 'lg:order-2' : 'lg:order-1'} flex flex-col`}>
         {section.title && (
-          <h2 className="section-title font-courier text-2xl sm:text-3xl md:text-4xl text-[#6b5d52] mb-8 font-normal uppercase tracking-wide text-left">
+          <h2 className="section-title font-courier text-xl sm:text-2xl md:text-3xl lg:text-4xl text-[#6b5d52] mb-6 sm:mb-8 font-normal uppercase tracking-wide text-left">
             {section.title}
           </h2>
         )}
-        <div className="text-[#6b5d52] text-base sm:text-lg leading-loose font-light space-y-4 flex-1">
+        <div className="text-[#6b5d52] text-sm sm:text-base md:text-lg leading-loose font-light space-y-4 flex-1">
           {useEventHighlights ? formatEventHighlights(section.content) : formatContent(section.content)}
         </div>
       </div>
@@ -414,14 +414,14 @@ function ExperienceDetail() {
       </div>
 
       {/* Hero Image - Landing Image */}
-      <section className="relative w-full h-[70vh] md:h-[80vh] overflow-hidden">
+      <section className="relative w-full min-h-[40vh] h-[60vh] sm:h-[70vh] md:h-[80vh] overflow-hidden">
         <img src={experience.image} alt={experience.title} className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-black/20" />
       </section>
 
       {/* Content Section */}
-      <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-12 max-w-6xl experience-content">
+      <section className="py-8 sm:py-12 md:py-16 lg:py-20 xl:py-24 bg-white">
+        <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 max-w-6xl experience-content">
           {/* Debug: Ensure content renders */}
           {!experience.fullDescription && (
             <div className="text-red-500">Error: No fullDescription found for {experience.title}</div>
@@ -443,9 +443,9 @@ function ExperienceDetail() {
                 formatEventHighlights={formatEventHighlights}
               />
             ) : (
-              <div className="mb-16 sm:mb-20 md:mb-24 max-w-4xl mx-auto">
+              <div className="mb-10 sm:mb-14 md:mb-20 lg:mb-24 max-w-4xl mx-auto">
                 {(experience.fullDescription.sections[0].title || experience.fullDescription.subtitle) && (
-                  <h2 className="section-title font-courier text-2xl sm:text-3xl md:text-4xl text-[#6b5d52] mb-8 font-normal uppercase tracking-wide text-left">
+                  <h2 className="section-title font-courier text-xl sm:text-2xl md:text-3xl lg:text-4xl text-[#6b5d52] mb-6 sm:mb-8 font-normal uppercase tracking-wide text-left">
                     {experience.fullDescription.sections[0].title || experience.fullDescription.subtitle}
                   </h2>
                 )}
@@ -510,9 +510,9 @@ function ExperienceDetail() {
             // If no image, render text only
             if (!hasImage) {
               return (
-                <div key={`section-${sectionIndex}`} className="mb-16 sm:mb-20 md:mb-24 max-w-4xl mx-auto">
+                <div key={`section-${sectionIndex}`} className="mb-10 sm:mb-14 md:mb-20 lg:mb-24 max-w-4xl mx-auto">
                   {section.title && (
-                    <h2 className="section-title font-courier text-2xl sm:text-3xl md:text-4xl text-[#6b5d52] mb-8 font-normal uppercase tracking-wide text-left">
+                    <h2 className="section-title font-courier text-xl sm:text-2xl md:text-3xl lg:text-4xl text-[#6b5d52] mb-6 sm:mb-8 font-normal uppercase tracking-wide text-left">
                       {section.title}
                     </h2>
                   )}
@@ -543,7 +543,7 @@ function ExperienceDetail() {
 
           {/* Video Section - At the End - Skip for La Kahina 2025 */}
           {experience.video && experience.slug !== 'la-kahina-marrakech-2025' && (
-            <div className="mt-16 sm:mt-20 md:mt-24">
+            <div className="mt-10 sm:mt-14 md:mt-20 lg:mt-24">
               <div className="relative aspect-video overflow-hidden rounded-lg bg-black shadow-2xl">
                 <video
                   autoPlay
@@ -609,11 +609,11 @@ function ExperienceDetail() {
 
           {/* Gallery Section */}
           {experience.gallery && experience.gallery.length > 0 && (
-            <div className="mt-16 sm:mt-20 md:mt-24">
-              <h2 className="section-title font-courier text-2xl sm:text-3xl md:text-4xl text-[#6b5d52] mb-8 sm:mb-12 font-normal text-center">
+            <div className="mt-10 sm:mt-14 md:mt-20 lg:mt-24">
+              <h2 className="section-title font-courier text-xl sm:text-2xl md:text-3xl lg:text-4xl text-[#6b5d52] mb-6 sm:mb-8 md:mb-12 font-normal text-center">
                 Gallery
               </h2>
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-4 md:gap-6 lg:gap-8">
                 {experience.gallery.map((img, index) => (
                   <div key={index} className="aspect-square overflow-hidden rounded-lg shadow-md">
                     <img
@@ -633,11 +633,11 @@ function ExperienceDetail() {
             if (otherExperiences.length === 0) return null
 
             return (
-              <div className="mt-16 sm:mt-20 md:mt-24">
-                <h2 className="section-title font-courier text-2xl sm:text-3xl md:text-4xl text-[#6b5d52] mb-8 sm:mb-12 font-normal text-center">
+              <div className="mt-10 sm:mt-14 md:mt-20 lg:mt-24">
+                <h2 className="section-title font-courier text-xl sm:text-2xl md:text-3xl lg:text-4xl text-[#6b5d52] mb-6 sm:mb-8 md:mb-12 font-normal text-center">
                   Other Experiences
                 </h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-10">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 lg:gap-10">
                   {otherExperiences.map((otherExp) => (
                     <Link
                       key={otherExp.id}
@@ -651,8 +651,8 @@ function ExperienceDetail() {
                           className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                         />
                         {/* Label overlay */}
-                        <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8 text-center z-10 bg-gradient-to-t from-black/70 via-black/30 to-transparent">
-                          <p className="text-white uppercase tracking-[0.2em] sm:tracking-[0.25em] text-xs sm:text-sm md:text-base font-light drop-shadow-lg">
+                        <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 md:p-8 text-center z-10 bg-gradient-to-t from-black/70 via-black/30 to-transparent">
+                          <p className="text-white uppercase tracking-[0.15em] sm:tracking-[0.2em] md:tracking-[0.25em] text-xs sm:text-sm md:text-base font-light drop-shadow-lg">
                             {otherExp.label || `LA KAHINA ${otherExp.title.toUpperCase()}`}
                           </p>
                         </div>
